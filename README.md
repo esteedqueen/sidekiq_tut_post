@@ -4,25 +4,24 @@ We rely on them for a lot of things - common use cases include sending emails, p
 
 In a typical production app, there's a possibility of processing hundreds of jobs per second under normal circumstances and thousands depending on the number of users and campaign going on.
 
-I've been using [Resque](https://github.com/resque/resque) for a while but recently made a switch to [Sidekiq](https://github.com/mperham/sidekiq). I initially wanted to write about the switch but I soon realized that the knowledge of introducing Sidekiq to a new project is important and the post became really long so I decided to split it. In this post, I'm going to show you how to use Sidekiq for your background jobs on a new rails app. And in part 2, I'll write about switching from an existing app with Resque to Sidekiq.
+I've been using [Resque](https://github.com/resque/resque) for a while but recently made a switch to [Sidekiq](https://github.com/mperham/sidekiq) on a few apps. I initially wanted to write about the switch but I soon realized that the knowledge of introducing Sidekiq to a new project is important and the post became really long so I decided to split it. In this post, I'm going to show you how to use Sidekiq for your background jobs on a new rails app. And in part 2, I'll write about switching from an existing app on Resque to Sidekiq.
 
 # Why Sidekiq?
 I made the move for two reasons:
 
-  1. Failed jobs on Resque: 
+  1. Failed jobs on Resque : 
 ![alt text][failedjobs]
 
 [failedjobs]: ./images/resquefailedjobs.png "Failed jobs on Resque"
 
 Apart from dealing with lots of failed jobs?
   
-  2. Performance - this chart on  Sidekiq [repository](https://github.com/mperham/sidekiq#performance) caught my interest
+  2. Performance - this chart on  Sidekiq [repository](https://github.com/mperham/sidekiq#performance) caught my interest so I decided to give it a try.
 ![alt text][sidekiqperformance]
 
 [sidekiqperformance]: ./images/sidekiqperformance.png "Performance"
 
-# Content
-We'll cover the following:
+#I'll cover the following:
   - Sidekiq setup
   - Execute first job with Sidekiq
   - Send email asynchroniously using Sidekiq
@@ -46,9 +45,7 @@ Redis 2.8 or greater is required. 3.0.3+ is recommended for large installations 
 $ brew install redis
 ```
 
-   - If you have multiple server environment or multiple applications hosted using the same redis server then you must namespace your data. Otherwise sidekiq will try to execute tasks from one application with another application’s codebase.
-
-   If you run your local redis server environments for different apps on your machine. You need to add the gem ‘redis-namespace’ to namespace the redis keys via sidekiq
+   - If you your different apps on the local redis server environment on your machine. You need to add the gem ‘redis-namespace’ to namespace the redis keys via sidekiq.  Otherwise sidekiq will try to execute tasks from one application with another application’s codebase.
 
 ```ruby
 gem 'redis-namespace'
