@@ -1,4 +1,4 @@
-# Background Jobs with Sidekiq?
+# Background Jobs with Sidekiq
 Background jobs in rails applications make our development lives easier. 
 
 We rely on them for a lot of things - common use cases include sending emails, push notifications, processing 3rd party API interactions, transactions and long-running requests that tie up server resources.
