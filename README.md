@@ -172,22 +172,16 @@ You can send emails asynchronously with Action Mailer out of the box with Sideki
 They are:
 
  - .delay
-
-E.g.
 ```ruby
 EntryMailer.delay.welcome(@entry.id)
 ```
 
- - .delay_for(interval)
-
-E.g.
+.delay_for(interval)
 ```ruby
 EntryMailer.delay_for(1.day).activate(@entry.id)
 ```
  
  - .delay_until(timestamp)
-
-E.g.
 ```ruby
 EntryMailer.delay_until(3.days.from_now).re_engage(@entry.id)
 ```
