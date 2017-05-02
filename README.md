@@ -11,6 +11,6 @@ I made the move for two reasons:
 Failed jobs on Resque: 
 ![alt text][failedjobs]
 
-[failedjobs]: https://github.com/esteedqueen/sidekiq_tut_post/images/resquefailedjobs.png "Failed jobs on Resque"
+[failedjobs]: ./images/resquefailedjobs.png "Failed jobs on Resque"
 
 Apart from dealing with lots of failed jobs?
