@@ -46,7 +46,7 @@ Redis 2.8 or greater is required. 3.0.3+ is recommended for large installations 
 $ brew install redis
 ```
 
-   - If you your different apps on the local redis server environment on your machine. You need to add the gem ‘redis-namespace’ to namespace the redis keys via sidekiq.  Otherwise sidekiq will try to execute tasks from one application with another application’s codebase.
+   - If you run different apps on the local redis server environment on your machine. You need to add the gem ‘redis-namespace’ to namespace the redis keys via sidekiq.  Otherwise sidekiq will try to execute tasks from one application with another application’s codebase.
 
 ```ruby
 gem 'redis-namespace'
